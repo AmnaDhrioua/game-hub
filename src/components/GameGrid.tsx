@@ -5,12 +5,15 @@ import useGames, { Game } from '../hooks2/useGames';
 import GameCard from './GameCard';
 import GameCardSkeleton from './GameCardSkeleton';
 import GameCardContainer from './GameCardContainer';
+import { Genre } from '../hooks2/useGenres';
+interface Props {
+  selectedGenre: Genre | null
+}
 
-const skeletons = [1, 2, 3, 4, 5, 6];
 
-const GameGrid = () => {
-  const { data: games, error, isLoading } = useGames(); // Assuming 'data' is the property that holds the games
-
+const GameGrid = ( { selectedGenre }: Props) => {
+  const { data: games, error, isLoading } = useGames(selectedGenre); // Assuming 'data' is the property that holds the games
+  const skeletons = [1, 2, 3, 4, 5, 6];
   return (
     <>
       {error && <Text>{error}</Text>}
