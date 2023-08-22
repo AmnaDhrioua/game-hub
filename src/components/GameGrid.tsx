@@ -1,18 +1,19 @@
 // Assuming the useGames hook returns the 'games' data
 import React from 'react';
 import { SimpleGrid, Text } from '@chakra-ui/layout';
-import useGames, { Game } from '../hooks2/useGames';
+import useGames, { Game, Platform } from '../hooks2/useGames';
 import GameCard from './GameCard';
 import GameCardSkeleton from './GameCardSkeleton';
 import GameCardContainer from './GameCardContainer';
 import { Genre } from '../hooks2/useGenres';
 interface Props {
-  selectedGenre: Genre | null
+  selectedGenre: Genre | null;
+  selectedPlatform: Platform | null;
 }
 
 
-const GameGrid = ( { selectedGenre }: Props) => {
-  const { data: games, error, isLoading } = useGames(selectedGenre); // Assuming 'data' is the property that holds the games
+const GameGrid = ( { selectedGenre, selectedPlatform }: Props) => {
+  const { data: games, error, isLoading } = useGames(selectedGenre, selectedPlatform); // Assuming 'data' is the property that holds the games
   const skeletons = [1, 2, 3, 4, 5, 6];
   return (
     <>
