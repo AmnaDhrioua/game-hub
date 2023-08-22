@@ -1,24 +1,28 @@
 import React from 'react';
 import { Game } from '../hooks2/useGames';
 import { Card, CardBody, HStack, Heading, Image } from '@chakra-ui/react';
-import PlatformIconList from './PlatformIconList'; // You need to import PlatformIconList if it's not imported already
+import PlatformIconList from './PlatformIconList';
 import CriticScore from './CriticScore';
 import getCroppedImageUrl from '../services/image.url';
+import Emojis from './Emojis';
+
 interface Props {
   game: Game;
 }
 
 const GameCard = ({ game }: Props) => {
   return (
-    <Card >
+    <Card>
       <Image src={getCroppedImageUrl(game.background_image)} />
       <CardBody>
-        {/* Assuming PlatformIconList is a properly defined component */}
         <HStack justifyContent='space-between' marginBottom={3}>
           <PlatformIconList platforms={game.parent_platforms.map(p => p.platform)} />
-          <CriticScore score = {game.metacritic}/>
+          <CriticScore score={game.metacritic} />
         </HStack>
-        <Heading fontSize='2xl'>{game.name}</Heading>
+        <Heading fontSize='2xl'>
+          {game.name}
+          <Emojis rating={game.rating_top} />
+        </Heading>
       </CardBody>
     </Card>
   );
