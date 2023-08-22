@@ -6,14 +6,16 @@ import GameCard from './GameCard';
 import GameCardSkeleton from './GameCardSkeleton';
 import GameCardContainer from './GameCardContainer';
 import { Genre } from '../hooks2/useGenres';
+import { GameQuery } from '../App';
 interface Props {
-  selectedGenre: Genre | null;
-  selectedPlatform: Platform | null;
+  gameQuery: GameQuery
+  //selectedGenre: Genre | null;
+  //selectedPlatform: Platform | null;
 }
 
 
-const GameGrid = ( { selectedGenre, selectedPlatform }: Props) => {
-  const { data: games, error, isLoading } = useGames(selectedGenre, selectedPlatform); // Assuming 'data' is the property that holds the games
+const GameGrid = ( { gameQuery }: Props) => {
+  const { data: games, error, isLoading } = useGames(gameQuery); // Assuming 'data' is the property that holds the games
   const skeletons = [1, 2, 3, 4, 5, 6];
   return (
     <>
