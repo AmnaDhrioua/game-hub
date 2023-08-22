@@ -1,7 +1,7 @@
 import { HStack, List, ListItem, Button, Image, Spinner, Heading } from '@chakra-ui/react';
 import useGenres from '../hooks2/useGenres';
 import getCroppedImageUrl from '../services/image.url';
-
+import genres from '../data/genres';
 // Define the Genre type
 interface Genre {
   id: number;
